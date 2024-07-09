@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:latest
+    container_name: my-postgres
+    environment:
+      POSTGRES_USER: "matt"
+      POSTGRES_PASSWORD: "XRL8"
+      POSTGRES_DB: "mydatabase"
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  # ktor-app:
+  #   image: my-ktor-app:latest
+  #   container_name: ktor-app
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   depends_on:
+  #     - db
+  #   environment:
+  #     DATABASE_URL: jdbc:postgresql://db:5432/mydatabase
+  #     DATABASE_USER: myuser
+  #     DATABASE_PASSWORD: mysecretpassword
+  #   ports:
+  #     - "8080:8080"
+
+volumes:
+  postgres_data:
